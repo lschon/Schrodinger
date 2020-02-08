@@ -3,12 +3,12 @@ import random
 
 pygame.init()
 
-display_width=500
-display_height=500
-cat_width=50
-cat_height=50
-quartercircle_width=30
-quartercircle_height=30
+display_width=800
+display_height=600
+cat_width=120
+cat_height=100
+quartercircle_width=60
+quartercircle_height=60
 xcat=30
 ycat=30
 vel=5
@@ -26,21 +26,19 @@ pygame.display.set_caption('Schrodingers Cat: Wanted Dead or Alive')
 
 cat = pygame.image.load('pusspuss.png')
 cat = pygame.transform.scale(cat, (cat_width, cat_height))
+corner = pygame.image.load('radiationshooter.png')
+corner = pygame.transform.scale(corner, (quartercircle_width, quartercircle_height))
 
-quartercircle1 = pygame.image.load('quartercircleV2.png')
-quartercircle1 = pygame.transform.scale(quartercircle1, (quartercircle_width, quartercircle_height))
+quartercircle1 = corner
 quartercircle1 = pygame.transform.rotate(quartercircle1, 270)
 
-quartercircle2 = pygame.image.load('quartercircleV2.png')
-quartercircle2 = pygame.transform.scale(quartercircle2, (quartercircle_width, quartercircle_height))
+quartercircle2 = corner
 quartercircle2 = pygame.transform.rotate(quartercircle2, 180)
 
-quartercircle3 = pygame.image.load('quartercircleV2.png')
-quartercircle3 = pygame.transform.scale(quartercircle3, (quartercircle_width, quartercircle_height))
+quartercircle3 = corner
 quartercircle3 = pygame.transform.rotate(quartercircle3, 0)
 
-quartercircle4 = pygame.image.load('quartercircleV2.png')
-quartercircle4 = pygame.transform.scale(quartercircle4, (quartercircle_width, quartercircle_height))
+quartercircle4 = corner
 quartercircle4 = pygame.transform.rotate(quartercircle4, 90)
 
 done = False
