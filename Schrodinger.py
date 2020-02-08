@@ -37,7 +37,7 @@ while not done:
         x += 5
 
     windowSurface.fill(WHITE)
-    pygame.draw.circle(windowSurface, BLUE, (300, 50) , 15, 0)
+    pygame.draw.circle(windowSurface, BLUE, (x, y) , 15, 0)
     pygame.display.update()
     pygame.display.flip()
     clock.tick(60)
