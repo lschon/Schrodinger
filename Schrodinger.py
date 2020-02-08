@@ -2,11 +2,11 @@ import pygame, sys, time, random
 from pygame.locals import *
 
 pygame.init()
-windowSurface = pygame.display.set_mode((400,300))
+windowSurface = pygame.display.set_mode((500,500), 0, 32)
 pygame.display.set_caption("Schrodingers Cat")
 done = False
 
-windowSurface = pygame.display.set_mode((500, 400), 0, 32)
+
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -16,7 +16,8 @@ BLUE = (0, 0, 255)
 
 x=30
 y=30
-
+radius=15
+vel=5
 
 clock = pygame.time.Clock()
 
@@ -27,17 +28,17 @@ while not done:
             done = True
 
     pressed = pygame.key.get_pressed()
-    if pressed[pygame.K_UP]:
-        y -= 5
-    if pressed[pygame.K_DOWN]:
-        y += 5
-    if pressed[pygame.K_LEFT]:
-        x -= 5
-    if pressed[pygame.K_RIGHT]:
-        x += 5
+    if pressed[pygame.K_UP] and y > radius:
+        y -= vel
+    if pressed[pygame.K_DOWN] and y < 500 - radius:
+        y += vel
+    if pressed[pygame.K_LEFT] and x > radius:
+        x -= vel
+    if pressed[pygame.K_RIGHT] and x < 500 - radius:
+        x += vel
 
     windowSurface.fill(WHITE)
-    pygame.draw.circle(windowSurface, BLUE, (x, y) , 15, 0)
+    pygame.draw.circle(windowSurface, BLUE, (x, y), radius, 0)
     pygame.display.update()
     pygame.display.flip()
     clock.tick(60)
