@@ -1,5 +1,4 @@
-import pygame, sys, time, random
-from pygame.locals import *
+import pygame
 
 pygame.init()
 
@@ -64,7 +63,7 @@ class Radiation:
     def display(self):
         pygame.draw.circle(windowSurface, self.colour, (self.x, self.y), self.size, self.thickness)
 
-radiation=Radiation((xrad, yrad), sizerad)
+radiation=Radiation(xrad, yrad, sizerad)
 
 #main game loop
 while not done:
@@ -81,6 +80,16 @@ while not done:
         xcat -= vel
     if pressed[pygame.K_RIGHT] and xcat < display_width - cat_width:
         xcat += vel
+    if pressed[pygame.K_a]:
+        cat = pygame.image.load('alivepussy2.png')
+        cat = pygame.transform.scale(cat, (cat_width, cat_height))
+    if pressed[pygame.K_d]:
+        cat = pygame.image.load('boned-Pussy.png')
+        cat = pygame.transform.scale(cat, (cat_width, cat_height))
+    if pressed[pygame.K_s]:
+        cat = pygame.image.load('cat.png')
+        cat = pygame.transform.scale(cat, (cat_width, cat_height))
+
 
     windowSurface.fill(WHITE)
     windowSurface.blit(cat, (xcat,ycat))
