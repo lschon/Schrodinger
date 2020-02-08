@@ -49,8 +49,9 @@ WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
-
-
+GREY = (160,160,160)
+background = GREY
+rate = 60
 class Radiation:
 
     def __init__(self, x, y, size):
@@ -83,15 +84,23 @@ while not done:
     if pressed[pygame.K_a]:
         cat = pygame.image.load('alivepussy2.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
+        background = WHITE
+        vel = 10
+        rate = 60
     if pressed[pygame.K_d]:
         cat = pygame.image.load('boned-Pussy.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
+        background = BLACK
+        vel = 5
+        rate = 30
     if pressed[pygame.K_s]:
         cat = pygame.image.load('cat.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
+        background = GREY
+        vel = 5
+        rate = 60
 
-
-    windowSurface.fill(WHITE)
+    windowSurface.fill(background)
     windowSurface.blit(cat, (xcat,ycat))
     windowSurface.blit(quartercircle1, (0,0))
     windowSurface.blit(quartercircle2, (display_width-quartercircle_width, 0))
@@ -99,4 +108,4 @@ while not done:
     windowSurface.blit(quartercircle4, (display_width-quartercircle_width, display_height-quartercircle_height))
     pygame.display.update()
     pygame.display.flip()
-    clock.tick(60)
+    clock.tick(rate)
