@@ -5,6 +5,8 @@ pygame.init()
 
 display_width=500
 display_height=500
+catwidth=50
+catheight=50
 
 clock = pygame.time.Clock()
 
@@ -13,7 +15,7 @@ windowSurface = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption('Schrodingers Cat')
 
 cat = pygame.image.load('cat.png')
-
+cat = pygame.transform.scale(cat, (catwidth,catheight))
 done = False
 
 
@@ -37,13 +39,13 @@ while not done:
             done = True
 
     pressed = pygame.key.get_pressed()
-    if pressed[pygame.K_UP] and y > radius:
+    if pressed[pygame.K_UP] and y > 0:
         y -= vel
-    if pressed[pygame.K_DOWN] and y < display_height - radius:
+    if pressed[pygame.K_DOWN] and y < display_height - catheight:
         y += vel
-    if pressed[pygame.K_LEFT] and x > radius:
+    if pressed[pygame.K_LEFT] and x > 0:
         x -= vel
-    if pressed[pygame.K_RIGHT] and x < display_width - radius:
+    if pressed[pygame.K_RIGHT] and x < display_width - catwidth:
         x += vel
 
     windowSurface.fill(WHITE)
