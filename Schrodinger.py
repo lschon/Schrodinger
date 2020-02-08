@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 
@@ -14,6 +15,8 @@ vel=5
 xrad=100
 yrad=100
 sizerad=50
+anglerad=random.randint(0,90)
+
 
 clock = pygame.time.Clock()
 
@@ -21,7 +24,7 @@ windowSurface = pygame.display.set_mode((display_width,display_height))
 
 pygame.display.set_caption('Schrodingers Cat: Wanted Dead or Alive')
 
-cat = pygame.image.load('cat.png')
+cat = pygame.image.load('pusspuss.png')
 cat = pygame.transform.scale(cat, (cat_width, cat_height))
 
 quartercircle1 = pygame.image.load('quartercircleV2.png')
@@ -66,6 +69,7 @@ class Radiation:
 
 radiation=Radiation(xrad, yrad, sizerad)
 
+
 #main game loop
 while not done:
     for event in pygame.event.get():
@@ -94,13 +98,27 @@ while not done:
         vel = 5
         rate = 30
     if pressed[pygame.K_s]:
-        cat = pygame.image.load('cat.png')
+        cat = pygame.image.load('pusspuss.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
         background = GREY
         vel = 5
         rate = 60
 
+<<<<<<< HEAD
     windowSurface.fill(background)
+=======
+
+
+
+
+
+
+
+
+
+
+    windowSurface.fill(WHITE)
+>>>>>>> ae2fba6e84fa9809b202b27fe59a0a3f0357c106
     windowSurface.blit(cat, (xcat,ycat))
     windowSurface.blit(quartercircle1, (0,0))
     windowSurface.blit(quartercircle2, (display_width-quartercircle_width, 0))
