@@ -51,7 +51,8 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 GREY = (160,160,160)
-background = GREY
+YELLOW = (255, 255, 50)
+background = WHITE
 rate = 60
 class Radiation:
 
@@ -86,37 +87,22 @@ while not done:
     if pressed[pygame.K_a]:
         cat = pygame.image.load('alivepussy2.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
-        background = WHITE
-        vel = 10
+        background = YELLOW
+        vel = 20
         rate = 60
     if pressed[pygame.K_d]:
         cat = pygame.image.load('boned-Pussy.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
         background = BLACK
-        vel = 5
+        vel = 10
         rate = 30
     if pressed[pygame.K_s]:
         cat = pygame.image.load('pusspuss.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
-        background = GREY
-        vel = 5
+        background = WHITE
+        vel = 10
         rate = 60
-
-<<<<<<< HEAD
     windowSurface.fill(background)
-=======
-
-
-
-
-
-
-
-
-
-
-    windowSurface.fill(WHITE)
->>>>>>> ae2fba6e84fa9809b202b27fe59a0a3f0357c106
     windowSurface.blit(cat, (xcat,ycat))
     windowSurface.blit(quartercircle1, (0,0))
     windowSurface.blit(quartercircle2, (display_width-quartercircle_width, 0))
