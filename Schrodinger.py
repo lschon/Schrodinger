@@ -47,7 +47,7 @@ while not done:
         x += vel
 
     windowSurface.fill(WHITE)
-    display_surface.blit(cat, (x,y))
+    windowSurface.blit(cat, (x,y))
     pygame.display.update()
     pygame.display.flip()
     clock.tick(60)
