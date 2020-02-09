@@ -8,8 +8,8 @@ cat_width=120
 cat_height=100
 quartercircle_width=60
 quartercircle_height=60
-xcat=30
-ycat=30
+xcat=0.5*display_width-0.5*cat_width
+ycat=0.5*display_height-0.5*cat_height
 vel=5
 xrad=100
 yrad=100
@@ -112,7 +112,7 @@ counter, text = 0, '0'
 pygame.time.set_timer(pygame.USEREVENT, 1000)
 font = pygame.font.SysFont('comicsansms', 60)
 timer_clr=BLACK
-
+game_over=False
 #main game loop
 while not done:
     for event in pygame.event.get():
@@ -169,3 +169,10 @@ while not done:
     pygame.display.update()
     pygame.display.flip()
     clock.tick(rate)
+    #When the game ends, say that game_over=True
+        if game_over=True:
+            screen.blit(background, (0, 0))
+            largeFont = pygame.font.SysFont(None, 80) # creates a font object
+            score = largeFont.render('Time alive: '+ str(count)+ " seconds",1, BLUE)
+            screen.blit(score, display_height/2)
+            pygame.display.update()
