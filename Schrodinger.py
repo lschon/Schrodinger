@@ -24,11 +24,11 @@ screen = pygame.display.set_mode((display_width,display_height))
 w, h = pygame.display.get_surface().get_size()
 pygame.display.set_caption('Schrodingers Cat: Wanted Dead or Alive')
 bgs = pygame.image.load("background_box.jpg")
-bgs = pygame.transform.scale(bg, (w, h))
-bga = pygame.image.load("background_box.jpg")
-bga = pygame.transform.scale(bg, (w, h))
-bgd = pygame.transform.scale(bg, (w, h))
-bgd = pygame.image.load("background_box.jpg")
+bgs = pygame.transform.scale(bgs, (w, h))
+bga = pygame.image.load("background_box_alive.jpg")
+bga = pygame.transform.scale(bga, (w, h))
+bgd = pygame.image.load("background_box_dead.jpg")
+bgd = pygame.transform.scale(bgd, (w, h))
 cat = pygame.image.load('pusspuss.png')
 cat = pygame.transform.scale(cat, (cat_width, cat_height))
 corner = pygame.image.load('radiationshooter.png')
@@ -79,7 +79,7 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-    screen.blit(bg, (0, 0))
+    screen.blit(background, (0, 0))
 
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_UP] and ycat > 0:
