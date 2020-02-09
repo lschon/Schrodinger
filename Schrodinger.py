@@ -158,7 +158,7 @@ while not done:
         vel = 5
         rate = 60
         timer_clr = BLACK
-    #NEED IF STATEMENT for when particle hits cat and then the counter stops and the end screen appears with counter time where DONE = TRUE
+    #NEED IF STATEMENT for when particle hits cat and then the counter stops and the end screen appears with counter time where DONE = TRUE & Game_over = True
     screen.blit(background, (0, 0))
     screen.blit(cat, (xcat,ycat))
     screen.blit(quartercircle1, (0,0))
@@ -170,7 +170,7 @@ while not done:
     pygame.display.flip()
     clock.tick(rate)
     #When the game ends, say that game_over=True
-        if game_over=True:
+    if game_over=True:
             screen.blit(background, (0, 0))
             largeFont = pygame.font.SysFont(None, 80) # creates a font object
             score = largeFont.render('Time alive: '+ str(count)+ " seconds",1, BLUE)
