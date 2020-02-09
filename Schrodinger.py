@@ -20,10 +20,15 @@ anglerad=random.randint(0,90)
 
 clock = pygame.time.Clock()
 
-windowSurface = pygame.display.set_mode((display_width,display_height))
-
+screen = pygame.display.set_mode((display_width,display_height))
+w, h = pygame.display.get_surface().get_size()
 pygame.display.set_caption('Schrodingers Cat: Wanted Dead or Alive')
-
+bgs = pygame.image.load("background_box.jpg")
+bgs = pygame.transform.scale(bg, (w, h))
+bga = pygame.image.load("background_box.jpg")
+bga = pygame.transform.scale(bg, (w, h))
+bgd = pygame.transform.scale(bg, (w, h))
+bgd = pygame.image.load("background_box.jpg")
 cat = pygame.image.load('pusspuss.png')
 cat = pygame.transform.scale(cat, (cat_width, cat_height))
 corner = pygame.image.load('radiationshooter.png')
@@ -52,7 +57,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 GREY = (160,160,160)
 YELLOW = (255, 255, 50)
-background = WHITE
+background = bgs
 rate = 60
 class Radiation:
 
@@ -64,7 +69,7 @@ class Radiation:
         self.thickness=2
 
     def display(self):
-        pygame.draw.circle(windowSurface, self.colour, (self.x, self.y), self.size, self.thickness)
+        pygame.draw.circle(screen, self.colour, (self.x, self.y), self.size, self.thickness)
 
 radiation=Radiation(xrad, yrad, sizerad)
 
@@ -74,6 +79,7 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+    screen.blit(bg, (0, 0))
 
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_UP] and ycat > 0:
@@ -87,27 +93,31 @@ while not done:
     if pressed[pygame.K_a]:
         cat = pygame.image.load('alivepussy2.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
-        background = YELLOW
-        vel = 20
+        background = bga
+        vel = 8
         rate = 60
+
     if pressed[pygame.K_d]:
         cat = pygame.image.load('boned-Pussy.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
-        background = BLACK
+        background = bgd
         vel = 10
         rate = 30
+
     if pressed[pygame.K_s]:
         cat = pygame.image.load('pusspuss.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
-        background = WHITE
-        vel = 10
+        background = bgs
+        vel = 5
         rate = 60
-    windowSurface.fill(background)
-    windowSurface.blit(cat, (xcat,ycat))
-    windowSurface.blit(quartercircle1, (0,0))
-    windowSurface.blit(quartercircle2, (display_width-quartercircle_width, 0))
-    windowSurface.blit(quartercircle3, (0,display_height-quartercircle_height))
-    windowSurface.blit(quartercircle4, (display_width-quartercircle_width, display_height-quartercircle_height))
+
+
+    screen.blit(background, (0, 0))
+    screen.blit(cat, (xcat,ycat))
+    screen.blit(quartercircle1, (0,0))
+    screen.blit(quartercircle2, (display_width-quartercircle_width, 0))
+    screen.blit(quartercircle3, (0,display_height-quartercircle_height))
+    screen.blit(quartercircle4, (display_width-quartercircle_width, display_height-quartercircle_height))
     pygame.display.update()
     pygame.display.flip()
     clock.tick(rate)
