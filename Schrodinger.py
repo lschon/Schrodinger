@@ -17,7 +17,7 @@ sizerad=50
 
 clock = pygame.time.Clock()
 
-windowSurface = pygame.display.set_mode((display_width,display_height))
+screen = pygame.display.set_mode((display_width,display_height))
 
 pygame.display.set_caption('Schrodingers Cat: Wanted Dead or Alive')
 
@@ -40,7 +40,9 @@ quartercircle4 = pygame.transform.rotate(quartercircle4, 90)
 
 done = False
 
-
+counter, text = 0, '0'.rjust(3)
+pygame.time.set_timer(pygame.USEREVENT, 1000)
+font = pygame.font.SysFont('Consolas', 50)
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -59,15 +61,20 @@ class Radiation:
         self.thickness=2
 
     def display(self):
-        pygame.draw.circle(windowSurface, self.colour, (self.x, self.y), self.size, self.thickness)
+        pygame.draw.circle(screen, self.colour, (self.x, self.y), self.size, self.thickness)
 
 radiation=Radiation(xrad, yrad, sizerad)
 
 #main game loop
 while not done:
     for event in pygame.event.get():
+
         if event.type == pygame.QUIT:
             done = True
+
+        if event.type == pygame.USEREVENT:
+            counter += 1
+            text = str(counter).rjust(3)
 
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_UP] and ycat > 0:
@@ -87,6 +94,7 @@ while not done:
     if pressed[pygame.K_s]:
         cat = pygame.image.load('cat.png')
         cat = pygame.transform.scale(cat, (cat_width, cat_height))
+<<<<<<< Updated upstream
 
 
     windowSurface.fill(WHITE)
@@ -95,6 +103,19 @@ while not done:
     windowSurface.blit(quartercircle2, (display_width-quartercircle_width, 0))
     windowSurface.blit(quartercircle3, (0,display_height-quartercircle_height))
     windowSurface.blit(quartercircle4, (display_width-quartercircle_width, display_height-quartercircle_height))
+=======
+        background = WHITE
+        vel = 10
+        rate = 60
+
+    screen.fill(background)
+    screen.blit(cat, (xcat,ycat))
+    screen.blit(quartercircle1, (0,0))
+    screen.blit(font.render(text, True, (RED)), (32, 48))
+    screen.blit(quartercircle2, (display_width-quartercircle_width, 0))
+    screen.blit(quartercircle3, (0,display_height-quartercircle_height))
+    screen.blit(quartercircle4, (display_width-quartercircle_width, display_height-quartercircle_height))
+>>>>>>> Stashed changes
     pygame.display.update()
     pygame.display.flip()
     clock.tick(60)
