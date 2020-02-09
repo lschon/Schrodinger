@@ -59,6 +59,48 @@ GREY = (160,160,160)
 YELLOW = (255, 255, 50)
 background = bgs
 rate = 60
+
+font = pygame.font.Font(None, 36)
+
+#MAKING THE INSTRUCTION PAGE
+display_instructions = True
+instruction_page=1
+while not done and display_instructions:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            instruction_page += 1
+            if instruction_page == 2:
+                display_instructions = False
+
+    if instruction_page == 1:
+        screen.blit(background, (0, 0))
+
+        text = font.render("Schrödinger's Cat: Wanted Dead or Alive", True, BLUE)
+        screen.blit(text, [10,10])
+        text = font.render("The objective of the game... survive!", True, BLUE)
+        screen.blit(text, [10,40])
+        text = font.render("You are Schrödinger's cat and you are both dead and alive,", True, BLUE)
+        screen.blit(text, [10,100])
+        text = font.render("a state called quantum superposition by scientists!", True, BLUE)
+        screen.blit(text, [10,130])
+        text = font.render("Utilise this unique property and flip between the two states,", True, BLUE)
+        screen.blit(text, [10,160])
+        text = font.render("in order to avoid the radioactive particles trying to harm you!", True, BLUE)
+        screen.blit(text, [10,190])
+        text = font.render("Press the A key to use your LIVING powers... speed!", True, WHITE)
+        screen.blit(text, [10,250])
+        text = font.render("Press the D key to use your DEATHLY powers... slowing!", True, BLACK)
+        screen.blit(text, [10,280])
+        text = font.render("Press the S key to return to your in-between alive/dead state.", True, RED)
+        screen.blit(text, [10,310])
+        text = font.render("Try to survive for as long as you can... good luck!", True, BLUE)
+        screen.blit(text, [10,370])
+        text = font.render("Click to continue", True, BLUE)
+        screen.blit(text, [10,400])
+    pygame.display.flip()
+
 class Radiation:
 
     def __init__(self, x, y, size):
