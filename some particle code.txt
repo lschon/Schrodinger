@@ -1,0 +1,23 @@
+#random angle function
+def random_angle():
+    anglerad=random.randint(0, 360)
+    anglerad *= math.pi/180
+    return anglerad
+
+#particle print function, make 1 for each particle (change to circle if we can find how )
+def particle(part_x, part_y, part_w, part_h, colour):
+    pygame.draw.rect(screen, colour, [part_x, part_y, part_w, part_h])
+
+#particle start positions and trajectory will need new for each
+rad_startx = 200
+rad_starty = 200
+rad_traj = random.randrange(90, 180)
+rad_speed = 7
+rad_width = 20
+rad_height = 20
+rad_traj = random_angle()
+
+#need this at an appropriate place to layer above background
+particle(rad_startx, rad_starty, rad_width, rad_height, RED)
+    rad_starty += rad_speed*math.cos(rad_traj)
+    rad_startx += rad_speed*math.sin(rad_traj)
