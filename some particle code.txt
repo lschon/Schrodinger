@@ -1,23 +1,90 @@
 #random angle function
-def random_angle():
-    anglerad=random.randint(0, 360)
+def random_angle(x,y):
+    anglerad=random.randint(x, y)
     anglerad *= math.pi/180
     return anglerad
 
-#particle print function, make 1 for each particle (change to circle if we can find how )
-def particle(part_x, part_y, part_w, part_h, colour):
-    pygame.draw.rect(screen, colour, [part_x, part_y, part_w, part_h])
 
-#particle start positions and trajectory will need new for each
-rad_startx = 200
-rad_starty = 200
-rad_traj = random.randrange(90, 180)
-rad_speed = 7
-rad_width = 20
-rad_height = 20
-rad_traj = random_angle()
+#particle print function, make 1 for each particle
+def particle(part_x, part_y, radius, colour):
+    pygame.draw.circle(screen, colour, (part_x, part_y), radius)
+    return part_x, part_y	
+
+
+rad1_x = 0
+rad1_y = 0
+
+rad2_x = 0
+rad2_y = display_height
+
+rad3_x = display_width
+rad3_y = 0
+
+rad4_x = display_width
+rad4_y = display_height
+
+rad_speed1 = 2
+rad_speed2 = 2
+rad_speed3 = 2
+rad_speed4 = 2
+
+rad_width = 5
+rad_traj1 = random_angle(90, 180)
+rad_traj2 = random_angle(0, 90)
+rad_traj3 = random_angle(180,270)
+rad_traj4 = random_angle(270,360)
+
+
+
+
+while loop
 
 #need this at an appropriate place to layer above background
-particle(rad_startx, rad_starty, rad_width, rad_height, RED)
-    rad_starty += rad_speed*math.cos(rad_traj)
-    rad_startx += rad_speed*math.sin(rad_traj)
+p1x, p1y = particle(rad1_x, rad1_y, rad_width, GREEN)
+p2x, p2y = particle(rad2_x, rad2_y, rad_width, GREEN)
+p3x, p3y = particle(rad3_x, rad3_y, rad_width, GREEN)
+p4x, p4y = particle(rad4_x, rad4_y, rad_width, GREEN)
+rad1_y += rad_speed1*math.cos(rad_traj1)
+rad1_x += rad_speed1*math.sin(rad_traj1)
+rad2_y += rad_speed2*math.cos(rad_traj2)
+rad2_x += rad_speed2*math.sin(rad_traj2)
+rad3_y += rad_speed3*math.cos(rad_traj3)
+rad3_x += rad_speed3*math.sin(rad_traj3)
+rad4_y += rad_speed4*math.cos(rad_traj4)
+rad4_x += rad_speed4*math.sin(rad_traj4)
+
+#speed factor reversing (with a negative) the particle trajectory and increasing speed
+if (p1x < 0 or p1x > display_width or p1y < 0 or p1y > display_height):
+	rad_speed1 += speed_factor
+	rad1_x = 0
+	rad1_y = 0
+	rad_traj1 = random_angle(90, 180)
+if (p2x < 0 or p2x > display_width or p2y < 0 or p2y > display_height):
+	rad_speed2 += speed_factor
+	rad2_x = 0
+	rad2_y = display_height
+	rad_traj2 = random_angle(90, 180)
+if (p3x < 0 or p3x > display_width or p3y < 0 or p3y > display_height):
+	rad_speed3 += speed_factor
+	rad3_x = display_width
+	rad3_y = 0
+	rad_traj3 = random_angle(90, 180)
+if (p4x < 0 or p4x > display_width or p4y < 0 or p4y > display_height):
+	rad_speed4 += speed_factor
+	rad4_x = display_width
+	rad4_y = display_height
+	rad_traj4 = random_angle(90, 180)
+
+class Radiation:
+
+    def __init__(self, x, y, size):
+        self.x=x
+        self.y=y
+        self.size=size
+        self.colour=RED
+        self.thickness=2
+
+    def display(self):
+        pygame.draw.circle(screen, self.colour, (self.x, self.y), self.size, self.thickness)
+
+radiation=Radiation(xrad, yrad, sizerad)
