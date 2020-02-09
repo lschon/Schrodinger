@@ -72,15 +72,26 @@ class Radiation:
         pygame.draw.circle(screen, self.colour, (self.x, self.y), self.size, self.thickness)
 
 radiation=Radiation(xrad, yrad, sizerad)
+#timer stuff
+counter, text = 0, '0'
+pygame.time.set_timer(pygame.USEREVENT, 1000)
+font = pygame.font.SysFont('comicsansms', 60)
 
+timer_clr=BLACK
 
 #main game loop
 while not done:
     for event in pygame.event.get():
+
         if event.type == pygame.QUIT:
             done = True
-    screen.blit(background, (0, 0))
 
+
+        if event.type == pygame.USEREVENT:
+            counter += 1
+            text = str(counter)
+
+    screen.blit(background, (0, 0))
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_UP] and ycat > 0:
         ycat -= vel
@@ -96,6 +107,7 @@ while not done:
         background = bga
         vel = 8
         rate = 60
+        timer_clr = BLACK
 
     if pressed[pygame.K_d]:
         cat = pygame.image.load('boned-Pussy.png')
@@ -103,6 +115,7 @@ while not done:
         background = bgd
         vel = 10
         rate = 30
+        timer_clr = WHITE
 
     if pressed[pygame.K_s]:
         cat = pygame.image.load('pusspuss.png')
@@ -110,13 +123,14 @@ while not done:
         background = bgs
         vel = 5
         rate = 60
-
+        timer_clr = BLACK
 
     screen.blit(background, (0, 0))
     screen.blit(cat, (xcat,ycat))
     screen.blit(quartercircle1, (0,0))
     screen.blit(quartercircle2, (display_width-quartercircle_width, 0))
     screen.blit(quartercircle3, (0,display_height-quartercircle_height))
+    screen.blit(font.render(text, True, (timer_clr)), (0.85*display_width, 0.1*display_height))
     screen.blit(quartercircle4, (display_width-quartercircle_width, display_height-quartercircle_height))
     pygame.display.update()
     pygame.display.flip()
