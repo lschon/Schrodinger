@@ -2,7 +2,6 @@ import pygame
 import random
 
 pygame.init()
-
 display_width=800
 display_height=600
 cat_width=120
@@ -19,7 +18,7 @@ anglerad=random.randint(0,90)
 
 
 clock = pygame.time.Clock()
-
+#Setting up screen visuals
 screen = pygame.display.set_mode((display_width,display_height))
 w, h = pygame.display.get_surface().get_size()
 pygame.display.set_caption('Schrodingers Cat: Wanted Dead or Alive')
@@ -33,22 +32,16 @@ cat = pygame.image.load('pusspuss.png')
 cat = pygame.transform.scale(cat, (cat_width, cat_height))
 corner = pygame.image.load('radiationshooter.png')
 corner = pygame.transform.scale(corner, (quartercircle_width, quartercircle_height))
-
 quartercircle1 = corner
 quartercircle1 = pygame.transform.rotate(quartercircle1, 270)
-
 quartercircle2 = corner
 quartercircle2 = pygame.transform.rotate(quartercircle2, 180)
-
 quartercircle3 = corner
 quartercircle3 = pygame.transform.rotate(quartercircle3, 0)
-
 quartercircle4 = corner
 quartercircle4 = pygame.transform.rotate(quartercircle4, 90)
 
 done = False
-
-
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -61,7 +54,6 @@ background = bgs
 rate = 60
 
 font = pygame.font.Font(None, 36)
-
 #MAKING THE INSTRUCTION PAGE
 display_instructions = True
 instruction_page=1
@@ -114,11 +106,11 @@ class Radiation:
         pygame.draw.circle(screen, self.colour, (self.x, self.y), self.size, self.thickness)
 
 radiation=Radiation(xrad, yrad, sizerad)
-#timer stuff
+
+#timer
 counter, text = 0, '0'
 pygame.time.set_timer(pygame.USEREVENT, 1000)
 font = pygame.font.SysFont('comicsansms', 60)
-
 timer_clr=BLACK
 
 #main game loop
@@ -166,7 +158,7 @@ while not done:
         vel = 5
         rate = 60
         timer_clr = BLACK
-
+    #NEED IF STATEMENT for when particle hits cat and then the counter stops and the end screen appears with counter time where DONE = TRUE
     screen.blit(background, (0, 0))
     screen.blit(cat, (xcat,ycat))
     screen.blit(quartercircle1, (0,0))
