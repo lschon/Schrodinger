@@ -1,4 +1,4 @@
-Schrodinger's Cat Game
+# Schrodinger's Cat Game
 
 Interactive game aimed at outreach for aspiring physicists in school to get them interested and thinking about the quirky features of Quantum Mechanics such as superposition and the concept of Schrodinger's Cat. Developed using Python and the Pygame library during the Hello World Hackathon event (February 2020) in a team of 3 (Joseph Sleiman, Lucas Schon & Philip Abramson) wherin we won the overall best prize and the best physics outreach project.
 
